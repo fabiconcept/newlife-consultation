@@ -294,9 +294,10 @@ body {
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
+  backdrop-filter: blur(4px) grayscale(100%);
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 40;
+  z-index: 999;
 }
 
 .nav-overlay.open {
@@ -309,12 +310,12 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  width: 280px;
-  height: 100%;
+  width: 90dvw;
+  height: 100dvh;
   background: white;
   transform: translateX(100%);
   transition: transform 0.3s ease;
-  z-index: 50;
+  z-index: 999;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
