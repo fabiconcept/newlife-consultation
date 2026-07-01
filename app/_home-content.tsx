@@ -189,9 +189,9 @@ export default function Home() {
 
       {/* 4b. Large Image Break */}
       <section className="relative py-32 sm:py-40 px-4 overflow-hidden">
-        <div className="absolute inset-0">
-          <Parallax intensity={-200}>
-            <img src="/images/home/matt-foxx-IUY_3DvM__w-unsplash.jpg" alt="" className="w-full h-[120%] object-cover mt-[-10%]" />
+        <div className="absolute inset-0 flex flex-col">
+          <Parallax intensity={-200} className="flex-1">
+            <img src="/images/home/matt-foxx-IUY_3DvM__w-unsplash.jpg" alt="" className="w-full min-h-auto h-[120%] object-cover mt-[-10%]" />
           </Parallax>
           <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-black/30" />
         </div>
@@ -205,10 +205,10 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Magnetic>
-                <Button href="/contact" variant="primary">Start Free Consultation</Button>
+                <Button href="/contact" className="max-sm:w-full" variant="primary">Start Free Consultation</Button>
               </Magnetic>
               <Magnetic>
-                <Button href="/pricing" variant="outline">View Pricing</Button>
+                <Button href="/pricing" className="max-sm:w-full" variant="outline">View Pricing</Button>
               </Magnetic>
             </div>
           </div>
@@ -250,10 +250,10 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Magnetic>
-                  <Button href="/about" variant="primary">Read My Story</Button>
+                  <Button href="/about" className="max-sm:w-full" variant="primary">Read My Story</Button>
                 </Magnetic>
                 <Magnetic>
-                  <Button href="/contact" variant="outline">Free Consultation</Button>
+                  <Button href="/contact" className="max-sm:w-full" variant="outline">Free Consultation</Button>
                 </Magnetic>
               </div>
             </div>
@@ -336,8 +336,8 @@ export default function Home() {
 
       {/* 7b. Large Image Break */}
       <section className="relative py-32 sm:py-40 min-h-screen flex items-center justify-start px-4 overflow-hidden">
-        <div className="absolute inset-0">
-          <Parallax intensity={-200}>
+        <div className="absolute inset-0 flex flex-col">
+          <Parallax intensity={-200} className="flex-1">
             <img src="/images/home/proven-results.jpg" alt="" className="w-full h-[120%] object-cover" />
           </Parallax>
           <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-black/30" />
@@ -352,10 +352,10 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Magnetic>
-                <Button href="/services" variant="primary">See Our Services</Button>
+                <Button href="/services" className="max-sm:w-full" variant="primary">See Our Services</Button>
               </Magnetic>
               <Magnetic>
-                <Button href="/contact" variant="outline">Get Started Today</Button>
+                <Button href="/contact" className="max-sm:w-full" variant="outline">Get Started Today</Button>
               </Magnetic>
             </div>
           </div>
@@ -396,10 +396,10 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Magnetic strength={1}>
-                <Button href="/contact" variant="white" size="lg">Book Free Consultation</Button>
+                <Button href="/contact" className="max-sm:w-full" variant="white" size="lg">Book Free Consultation</Button>
               </Magnetic>
               <Magnetic strength={1}>
-                <Button href="/pricing" variant="white" size="lg">View Pricing</Button>
+                <Button href="/pricing" className="max-sm:w-full" variant="white" size="lg">View Pricing</Button>
               </Magnetic>
             </div>
           </div>
