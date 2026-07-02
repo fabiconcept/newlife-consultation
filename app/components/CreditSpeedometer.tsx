@@ -55,6 +55,8 @@ interface GaugeProps {
 function ScoreGauge({ score, previousScore, size = "lg" }: GaugeProps & { size?: "sm" | "lg" }) {
   const [anim, setAnim] = useState(MIN);
   const reducedMotion = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const hasAnimatedRef = useRef(false);
 
   useEffect(() => {
     reducedMotion.current =
@@ -63,21 +65,39 @@ function ScoreGauge({ score, previousScore, size = "lg" }: GaugeProps & { size?:
   }, []);
 
   useEffect(() => {
-    if (reducedMotion.current) { setAnim(score); return; }
-    setAnim(MIN);
-    const dur = 1100;
-    const steps = 50;
-    const delta = score - MIN;
-    let frame = 0;
-    const t = setInterval(() => {
-      frame += 1;
-      if (frame >= steps) { setAnim(score); clearInterval(t); }
-      else {
-        const p = frame / steps;
-        setAnim(Math.round(MIN + delta * (1 - Math.pow(1 - p, 3))));
-      }
-    }, dur / steps);
-    return () => clearInterval(t);
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimatedRef.current) {
+          hasAnimatedRef.current = true;
+          if (reducedMotion.current) {
+            setAnim(score);
+          } else {
+            setAnim(MIN);
+            const dur = 1100;
+            const steps = 50;
+            const delta = score - MIN;
+            let frame = 0;
+            const t = setInterval(() => {
+              frame += 1;
+              if (frame >= steps) {
+                setAnim(score);
+                clearInterval(t);
+              } else {
+                const p = frame / steps;
+                setAnim(Math.round(MIN + delta * (1 - Math.pow(1 - p, 3))));
+              }
+            }, dur / steps);
+          }
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
   }, [score]);
 
   const cx = 150;
@@ -121,7 +141,7 @@ function ScoreGauge({ score, previousScore, size = "lg" }: GaugeProps & { size?:
   const digitHeight = isSm ? 48 : 72;
 
   return (
-    <div className="flex flex-col items-center w-full">
+    <div ref={containerRef} className="flex flex-col items-center w-full">
       <svg
         viewBox="0 0 300 230"
         className={`w-full ${isSm ? "max-w-[300px]" : "max-w-[460px]"}`}
