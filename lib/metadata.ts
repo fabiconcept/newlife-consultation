@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const SITE_NAME = "New Life Consulting";
-const SITE_URL = "https://www.newlifeconsulting.com";
+const SITE_URL = process.env.SITE_URL || "https://www.newlifeconsulting.com";
 const DEFAULT_DESCRIPTION = "Expert credit consulting for everyday people. Transform your financial future with a team that cares.";
 const DEFAULT_OG_IMAGE = "/api/og";
 

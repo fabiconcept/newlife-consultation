@@ -3,6 +3,8 @@ import Button from "../components/Button";
 import CreditSpeedometer from "../components/CreditSpeedometer";
 import Parallax from "../components/Parallax";
 
+const SITE_URL = process.env.SITE_URL || "https://www.newlifeconsulting.com";
+
 export const metadata: Metadata = {
   title: "About Us",
   description:
@@ -11,8 +13,8 @@ export const metadata: Metadata = {
     title: "About Us",
     description:
       "Learn about New Life Consulting. We help everyday people take control of their credit.",
-    url: "https://www.newlifeconsulting.com/about",
-    images: [{ url: "/api/og?title=About%20Us&subtitle=Learn%20about%20New%20Life%20Consulting", width: 1200, height: 630 }],
+    url: `${SITE_URL}/about`,
+    images: [{ url: `${SITE_URL}/api/og?title=About%20Us&subtitle=Learn%20about%20New%20Life%20Consulting`, width: 1200, height: 630 }],
   },
 };
 

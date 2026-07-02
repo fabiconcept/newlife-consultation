@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import PricingContent from "./_pricing-content";
 
+const SITE_URL = process.env.SITE_URL || "https://www.newlifeconsulting.com";
+
 export const metadata: Metadata = {
   title: "Pricing",
   description:
@@ -9,8 +11,8 @@ export const metadata: Metadata = {
     title: "Pricing",
     description:
       "Transparent pricing for credit consulting services. Choose the plan that fits your needs.",
-    url: "https://www.newlifeconsulting.com/pricing",
-    images: [{ url: "/api/og?title=Pricing&subtitle=Transparent%20Pricing%20for%20Credit%20Consulting", width: 1200, height: 630 }],
+    url: `${SITE_URL}/pricing`,
+    images: [{ url: `${SITE_URL}/api/og?title=Pricing&subtitle=Transparent%20Pricing%20for%20Credit%20Consulting`, width: 1200, height: 630 }],
   },
 };
 

@@ -24,22 +24,24 @@ const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
 });
 
+const SITE_URL = process.env.SITE_URL || "https://www.newlifeconsulting.com";
+
 export const metadata: Metadata = {
   title: {
     default: "New Life Consulting | Credit Consulting for Everyday People",
     template: "%s | New Life Consulting",
   },
   description: "Expert credit consulting for everyday people. Transform your financial future with a team that cares. Credit repair, financial planning, and debt management.",
-  metadataBase: new URL("https://www.newlifeconsulting.com"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     siteName: "New Life Consulting",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/api/og?title=New%20Life%20Consulting&subtitle=Credit%20Consulting%20for%20Everyday%20People", width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/api/og?title=New%20Life%20Consulting&subtitle=Credit%20Consulting%20for%20Everyday%20People`, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/api/og?title=New%20Life%20Consulting&subtitle=Credit%20Consulting%20for%20Everyday%20People"],
+    images: [`${SITE_URL}/api/og?title=New%20Life%20Consulting&subtitle=Credit%20Consulting%20for%20Everyday%20People`],
   },
   robots: { index: true, follow: true },
   icons: { icon: "/favicon.ico" },
