@@ -13,9 +13,10 @@ interface SuccessModalProps {
   open: boolean;
   onClose: () => void;
   name: string;
+  planName?: string;
 }
 
-export default function SuccessModal({ open, onClose, name }: SuccessModalProps) {
+export default function SuccessModal({ open, onClose, name, planName }: SuccessModalProps) {
   return (
     <Dialog open={open} onOpenChange={(isOpen) => { if (!isOpen) onClose(); }}>
       <DialogContent
@@ -32,8 +33,17 @@ export default function SuccessModal({ open, onClose, name }: SuccessModalProps)
             Thanks{name ? `, ${name}` : ""}!
           </DialogTitle>
           <DialogDescription className="text-center space-y-1">
-            <span className="block text-gray-500">Your message has been sent successfully.</span>
-            <span className="block text-gray-400 text-sm">We&apos;ll get back to you within 24 hours.</span>
+            {planName ? (
+              <>
+                <span className="block text-gray-500">Your <span className="font-semibold text-foreground">{planName}</span> inquiry has been received.</span>
+                <span className="block text-gray-400 text-sm">We&apos;ll reach out within 24 hours to get you started.</span>
+              </>
+            ) : (
+              <>
+                <span className="block text-gray-500">Your message has been sent successfully.</span>
+                <span className="block text-gray-400 text-sm">We&apos;ll get back to you within 24 hours.</span>
+              </>
+            )}
           </DialogDescription>
         </DialogHeader>
 

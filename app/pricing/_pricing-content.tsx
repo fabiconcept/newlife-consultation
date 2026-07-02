@@ -67,7 +67,7 @@ export default function Pricing() {
                   <span>30-minute consultation call</span>
                 </li>
               </ul>
-              <Button href="/contact" variant="outline" fullWidth>Get Started</Button>
+              <Button href="/contact?plan=assessment" variant="outline" fullWidth>Get Started</Button>
             </div>
 
             {/* Tier 2 */}
@@ -120,7 +120,7 @@ export default function Pricing() {
                   <span>Dedicated support line</span>
                 </li>
               </ul>
-              <Button href="/contact" variant="secondary" fullWidth>Get Started</Button>
+              <Button href="/contact?plan=repair" variant="secondary" fullWidth>Get Started</Button>
             </div>
 
             {/* Tier 3 */}
@@ -170,7 +170,7 @@ export default function Pricing() {
                   <span>Wealth building roadmap</span>
                 </li>
               </ul>
-              <Button href="/contact" variant="accent" fullWidth>Get Started</Button>
+              <Button href="/contact?plan=freedom" variant="accent" fullWidth>Get Started</Button>
             </div>
           </div>
         </div>
@@ -198,7 +198,7 @@ export default function Pricing() {
           <p className="font-body text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
             Book your free consultation and let&apos;s build a plan for your financial future.
           </p>
-          <Button href="/contact" variant="white" size="lg">
+          <Button href="/contact?plan=consultation" variant="white" size="lg">
             Book Free Consultation
           </Button>
         </div>

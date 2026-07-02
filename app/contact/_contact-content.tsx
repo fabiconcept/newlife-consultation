@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent, useCallback, useRef, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import Button from "../components/Button";
 import SuccessModal from "../components/SuccessModal";
@@ -21,6 +22,7 @@ interface FormData {
   phone: string;
   service: string;
   message: string;
+  plan: string;
 }
 
 interface FormErrors {
@@ -39,8 +41,142 @@ const SERVICES = [
   { value: "repair", label: "Credit Repair" },
   { value: "planning", label: "Financial Planning" },
   { value: "debt", label: "Debt Management" },
+  { value: "literacy", label: "Financial Literacy" },
+  { value: "consulting", label: "Expert Consulting" },
   { value: "other", label: "Not sure yet" },
 ];
+
+const PLAN_CONFIG: Record<string, { service: string; heading: string; subheading: string; planName: string; price: string; period: string; features: string[]; dropdownLabel: string; defaultMessage: string; badge?: string }> = {
+  assessment: {
+    service: "analysis",
+    heading: "Get Started with Credit Assessment",
+    subheading: "A one-time deep dive into your credit report from all three bureaus.",
+    planName: "Credit Assessment",
+    price: "$99",
+    period: "one-time",
+    features: [
+      "Full credit report review (all 3 bureaus)",
+      "Score factor analysis",
+      "Personalized action plan",
+      "30-minute consultation call",
+    ],
+    dropdownLabel: "Credit Assessment ($99)",
+    defaultMessage: "Hi, I'm interested in the Credit Assessment plan ($99). I'd like to schedule my credit report review and consultation call. Please reach out to get started.",
+  },
+  repair: {
+    service: "repair",
+    heading: "Get Started with Credit Repair",
+    subheading: "Ongoing support to dispute errors and boost your score.",
+    planName: "Credit Repair Program",
+    price: "$299",
+    period: "/mo",
+    badge: "Most Popular",
+    features: [
+      "Everything in Assessment",
+      "Unlimited dispute assistance",
+      "Monthly progress reports",
+      "Creditor negotiations",
+      "Dedicated support line",
+    ],
+    dropdownLabel: "Credit Repair Program ($299/mo)",
+    defaultMessage: "Hi, I'm interested in the Credit Repair Program ($299/mo). I'd like to start the dispute process and work on improving my credit score. Please reach out to get started.",
+  },
+  freedom: {
+    service: "planning",
+    heading: "Get Started with Financial Freedom",
+    subheading: "Complete transformation with planning, budgeting, and wealth building.",
+    planName: "Financial Freedom",
+    price: "$499",
+    period: "one-time",
+    features: [
+      "Everything in Repair",
+      "Financial planning session",
+      "Custom budget & savings plan",
+      "Debt management strategy",
+      "Wealth building roadmap",
+    ],
+    dropdownLabel: "Financial Freedom ($499)",
+    defaultMessage: "Hi, I'm interested in the Financial Freedom plan ($499). I'd like to get started with financial planning, budgeting, and debt management. Please reach out to discuss next steps.",
+  },
+  consultation: {
+    service: "",
+    heading: "Book Your Free Consultation",
+    subheading: "No pressure, no sales pitch. Just an honest conversation about your credit.",
+    planName: "",
+    price: "",
+    period: "",
+    features: [],
+    dropdownLabel: "",
+    defaultMessage: "",
+  },
+  "credit-analysis": {
+    service: "analysis",
+    heading: "Get Started with Credit Score Analysis",
+    subheading: "Full breakdown of your credit report from all three bureaus.",
+    planName: "Credit Score Analysis",
+    price: "$99",
+    period: "one-time",
+    features: ["Tri-bureau report review", "Score factor analysis", "Personalized action plan"],
+    dropdownLabel: "Credit Score Analysis ($99)",
+    defaultMessage: "Hi, I'm interested in the Credit Score Analysis ($99). I'd like a full breakdown of my credit report from all three bureaus. Please reach out to get started.",
+  },
+  "credit-repair": {
+    service: "repair",
+    heading: "Get Started with Credit Repair",
+    subheading: "We handle the entire dispute process with all three bureaus.",
+    planName: "Credit Repair",
+    price: "$299",
+    period: "/mo",
+    badge: "Most Popular",
+    features: ["Bureau disputes", "Monthly progress reports", "Creditor negotiations"],
+    dropdownLabel: "Credit Repair ($299/mo)",
+    defaultMessage: "Hi, I'm interested in the Credit Repair plan ($299/mo). I'd like to start the dispute process with all three bureaus. Please reach out to get started.",
+  },
+  "financial-planning": {
+    service: "planning",
+    heading: "Get Started with Financial Planning",
+    subheading: "Build a real financial plan covering budgeting, saving, and investing.",
+    planName: "Financial Planning",
+    price: "$499",
+    period: "one-time",
+    features: ["Financial planning session", "Debt management", "Financial literacy sessions"],
+    dropdownLabel: "Financial Planning ($499)",
+    defaultMessage: "Hi, I'm interested in the Financial Planning plan ($499). I'd like to build a financial plan covering budgeting, saving, and investing. Please reach out to get started.",
+  },
+  "debt-management": {
+    service: "debt",
+    heading: "Get Started with Debt Management",
+    subheading: "Stop collection calls. We negotiate to cut balances and build a payoff strategy.",
+    planName: "Debt Management",
+    price: "$499",
+    period: "one-time",
+    features: ["Creditor negotiations", "Consolidation evaluation", "Payment plan structuring"],
+    dropdownLabel: "Debt Management ($499)",
+    defaultMessage: "Hi, I'm interested in the Debt Management plan ($499). I'd like help with creditor negotiations and building a payoff strategy. Please reach out to get started.",
+  },
+  "financial-literacy": {
+    service: "literacy",
+    heading: "Get Started with Financial Literacy",
+    subheading: "Learn how credit really works with one-on-one sessions and workshops.",
+    planName: "Financial Literacy",
+    price: "",
+    period: "",
+    features: ["One-on-one sessions", "Group workshops available"],
+    dropdownLabel: "Financial Literacy",
+    defaultMessage: "Hi, I'm interested in Financial Literacy. I'd like to learn how credit works through one-on-one sessions or group workshops. Please reach out to get started.",
+  },
+  consulting: {
+    service: "consulting",
+    heading: "Get Started with Expert Consulting",
+    subheading: "Direct access to an experienced credit professional for any financial question.",
+    planName: "Expert Consulting",
+    price: "",
+    period: "",
+    features: ["One-on-one sessions (in-person or virtual)", "Mortgage readiness assessment", "Priority scheduling"],
+    dropdownLabel: "Expert Consulting",
+    defaultMessage: "Hi, I'm interested in Expert Consulting. I'd like to schedule a one-on-one session to discuss my financial situation. Please reach out to get started.",
+  },
+};
 
 function validate(data: FormData): FormErrors {
   const errors: FormErrors = {};
@@ -106,6 +242,10 @@ function FieldError({ error }: { error?: string }) {
 }
 
 export default function Contact() {
+  const searchParams = useSearchParams();
+  const planParam = searchParams.get("plan");
+  const planConfig = planParam ? PLAN_CONFIG[planParam] : null;
+
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
@@ -115,8 +255,9 @@ export default function Contact() {
     name: "",
     email: "",
     phone: "",
-    service: "",
-    message: "",
+    service: planConfig?.service ?? "",
+    message: planConfig?.defaultMessage ?? "",
+    plan: planParam ?? "",
   });
 
   const update = useCallback((field: keyof FormData, value: string) => {
@@ -187,7 +328,7 @@ export default function Contact() {
       toast.success("Message sent successfully!");
       setSubmittedName(form.name.split(" ")[0]);
       setShowSuccess(true);
-      setForm({ name: "", email: "", phone: "", service: "", message: "" });
+      setForm({ name: "", email: "", phone: "", service: "", message: "", plan: "" });
       setErrors({});
       setTouched({});
     } catch {
@@ -220,7 +361,7 @@ export default function Contact() {
   return (
     <div className="flex flex-col">
       <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
-      <SuccessModal open={showSuccess} onClose={() => setShowSuccess(false)} name={submittedName} />
+      <SuccessModal open={showSuccess} onClose={() => setShowSuccess(false)} name={submittedName} planName={planConfig?.planName} />
 
       {/* 1. Page Header */}
       <section className="relative py-24 px-4 bg-primary text-white overflow-hidden">
@@ -267,10 +408,10 @@ export default function Contact() {
             <div>
               <p className="font-body text-secondary font-semibold mb-3">Free Consultation</p>
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 text-foreground leading-tight">
-                Let&apos;s talk about<br />your credit.
+                {planConfig?.heading ?? "Let\u2019s talk about\nyour credit."}
               </h2>
               <p className="font-body text-gray-500 mb-10 text-lg">
-                No pressure, no sales pitch. Just an honest conversation about where you are and where you want to be.
+                {planConfig?.subheading ?? "No pressure, no sales pitch. Just an honest conversation about where you are and where you want to be."}
               </p>
 
               <div className="space-y-5 mb-10">
@@ -311,6 +452,41 @@ export default function Contact() {
 
             {/* Right — Contact Form */}
             <div className="bg-gray-50 rounded-2xl p-8 sm:p-10 border border-gray-100">
+              {planConfig?.planName && (
+                <div className="mb-8 p-6 bg-white rounded-xl border border-gray-100">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 className="font-display text-lg font-bold text-foreground">{planConfig.planName}</h3>
+                      {planConfig.price && (
+                        <div className="flex items-baseline gap-1 mt-1">
+                          <span className="font-display text-3xl font-bold text-primary">{planConfig.price}</span>
+                          {planConfig.period && (
+                            <span className="font-body text-sm text-gray-400">{planConfig.period}</span>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    {planConfig.badge && (
+                      <span className="inline-block px-3 py-1 bg-secondary text-white text-xs font-semibold font-body rounded-full">
+                        {planConfig.badge}
+                      </span>
+                    )}
+                  </div>
+                  {planConfig.features.length > 0 && (
+                    <ul className="space-y-2">
+                      {planConfig.features.map((f) => (
+                        <li key={f} className="flex items-center gap-2.5">
+                          <svg className="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span className="font-body text-sm text-gray-600">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
+
               <h2 className="font-display text-2xl font-bold mb-2 text-foreground">Send a Message</h2>
               <p className="font-body text-gray-500 mb-8">We&apos;ll get back to you within 24 hours.</p>
 
@@ -375,6 +551,17 @@ export default function Contact() {
                   <label className="block text-sm font-medium mb-2">
                     What do you need help with? <span className="text-danger">*</span>
                   </label>
+                  {planConfig?.planName && (
+                    <div className="flex items-center gap-2 mb-2 px-3 py-2 bg-primary/5 border border-primary/20 rounded-lg">
+                      <svg className="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="font-body text-sm font-semibold text-primary">
+                        {planConfig.dropdownLabel}
+                      </span>
+                      <span className="font-body text-xs text-gray-400 ml-auto">Plan selected</span>
+                    </div>
+                  )}
                   <Select
                     value={form.service}
                     onValueChange={(val: string | null) => {

@@ -11,10 +11,23 @@ const SERVICE_LABELS: Record<string, string> = {
   other: "Not sure yet",
 };
 
+const PLAN_LABELS: Record<string, { name: string; price: string }> = {
+  assessment: { name: "Credit Assessment", price: "$99" },
+  repair: { name: "Credit Repair Program", price: "$299/mo" },
+  freedom: { name: "Financial Freedom", price: "$499" },
+  consultation: { name: "Free Consultation", price: "Free" },
+  "credit-analysis": { name: "Credit Score Analysis", price: "$99" },
+  "credit-repair": { name: "Credit Repair", price: "$299/mo" },
+  "financial-planning": { name: "Financial Planning", price: "$499" },
+  "debt-management": { name: "Debt Management", price: "$499" },
+  "financial-literacy": { name: "Financial Literacy", price: "" },
+  consulting: { name: "Expert Consulting", price: "" },
+};
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, phone, service, message } = body;
+    const { name, email, phone, service, message, plan } = body;
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -32,15 +45,19 @@ export async function POST(req: NextRequest) {
     }
 
     const serviceLabel = SERVICE_LABELS[service] || service || "Not specified";
+    const planInfo = plan ? PLAN_LABELS[plan] : null;
+    const subject = planInfo
+      ? `New Plan Inquiry: ${name} — ${planInfo.name} (${planInfo.price})`
+      : `New Contact: ${name} — ${serviceLabel}`;
 
     await resend.emails.send({
       from: "New Life Consulting <noreply@newlifeconsulting.com>",
       to: process.env.CONTACT_EMAIL || "baptistesteffon@gmail.com",
       replyTo: email,
-      subject: `New Contact: ${name} — ${serviceLabel}`,
+      subject,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #1e40af; margin-bottom: 8px;">New Contact Form Submission</h2>
+          <h2 style="color: #1e40af; margin-bottom: 8px;">${planInfo ? "New Plan Inquiry" : "New Contact Form Submission"}</h2>
           <p style="color: #64748b; margin-bottom: 24px;">Submitted via the New Life Consulting website</p>
 
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
@@ -56,6 +73,12 @@ export async function POST(req: NextRequest) {
               <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; color: #64748b;">Phone</td>
               <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; color: #1e293b;">${phone || "Not provided"}</td>
             </tr>
+            ${planInfo ? `
+            <tr>
+              <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; color: #64748b;">Plan</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; color: #1e293b; font-weight: 600;">${planInfo.name}${planInfo.price ? ` — ${planInfo.price}` : ""}</td>
+            </tr>
+            ` : ""}
             <tr>
               <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; color: #64748b;">Service</td>
               <td style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; color: #1e293b;">${serviceLabel}</td>

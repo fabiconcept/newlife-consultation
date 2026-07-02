@@ -181,7 +181,7 @@ export default function Services() {
                     </li>
                   ))}
                 </ul>
-                <a href="/contact" className="inline-flex items-center gap-2 font-body text-sm font-semibold transition-all duration-300 group-hover:gap-3" style={{ color: `var(${service.color})` }}>
+                <a href={`/contact?plan=${service.id}`} className="inline-flex items-center gap-2 font-body text-sm font-semibold transition-all duration-300 group-hover:gap-3" style={{ color: `var(${service.color})` }}>
                   Get Started
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -301,7 +301,7 @@ export default function Services() {
               Every month you wait is another month of high interest rates, denied applications, and missed opportunities. Let&apos;s change that today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button href="/contact" className="max-sm:w-full" variant="primary">
+              <Button href="/contact?plan=consultation" className="max-sm:w-full" variant="primary">
                 Book Free Consultation
               </Button>
               <Button href="/pricing" className="max-sm:w-full" variant="outline">
@@ -362,7 +362,7 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-              <Button href="/contact" variant="outline" fullWidth>Get Started</Button>
+              <Button href="/contact?plan=assessment" variant="outline" fullWidth>Get Started</Button>
             </div>
             <div className="bg-primary p-8 rounded-2xl text-white relative sm:scale-105 sm:shadow-xl sm:shadow-primary/20">
               <div className="absolute -top-3 right-6 bg-white text-primary px-3 py-1 text-xs rounded-full font-semibold font-body shadow-sm">Most Popular</div>
@@ -377,7 +377,7 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-              <Button href="/contact" variant="white" fullWidth>Get Started</Button>
+              <Button href="/contact?plan=repair" variant="white" fullWidth>Get Started</Button>
             </div>
             <div className="bg-white p-8 rounded-2xl border border-gray-100">
               <h3 className="font-display font-semibold text-xl mb-1 text-foreground">Full Package</h3>
@@ -391,7 +391,7 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-              <Button href="/contact" variant="outline" fullWidth>Get Started</Button>
+              <Button href="/contact?plan=freedom" variant="outline" fullWidth>Get Started</Button>
             </div>
           </div>
           <div className="text-center mt-12">
@@ -414,7 +414,7 @@ export default function Services() {
             Start with a free consultation. No commitment, no pressure. Just an honest conversation about where you are and where you want to go.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/contact" variant="white" size="lg">Book Free Consultation</Button>
+            <Button href="/contact?plan=consultation" variant="white" size="lg">Book Free Consultation</Button>
             <Button href="/pricing" variant="outline" size="lg">View Pricing</Button>
           </div>
         </div>
