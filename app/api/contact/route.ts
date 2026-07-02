@@ -4,10 +4,12 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const SERVICE_LABELS: Record<string, string> = {
-  analysis: "Credit Score Analysis",
-  repair: "Credit Repair",
-  planning: "Financial Planning",
-  debt: "Debt Management",
+  "credit-analysis": "Credit Score Analysis",
+  "credit-repair": "Credit Repair",
+  "financial-planning": "Financial Planning",
+  "debt-management": "Debt Management",
+  "financial-literacy": "Financial Literacy",
+  consulting: "Expert Consulting",
   other: "Not sure yet",
 };
 

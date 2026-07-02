@@ -37,18 +37,18 @@ const MAX_CHARS = 500;
 const MIN_CHARS = 10;
 
 const SERVICES = [
-  { value: "analysis", label: "Credit Score Analysis" },
-  { value: "repair", label: "Credit Repair" },
-  { value: "planning", label: "Financial Planning" },
-  { value: "debt", label: "Debt Management" },
-  { value: "literacy", label: "Financial Literacy" },
+  { value: "credit-analysis", label: "Credit Score Analysis" },
+  { value: "credit-repair", label: "Credit Repair" },
+  { value: "financial-planning", label: "Financial Planning" },
+  { value: "debt-management", label: "Debt Management" },
+  { value: "financial-literacy", label: "Financial Literacy" },
   { value: "consulting", label: "Expert Consulting" },
   { value: "other", label: "Not sure yet" },
 ];
 
 const PLAN_CONFIG: Record<string, { service: string; heading: string; subheading: string; planName: string; price: string; period: string; features: string[]; dropdownLabel: string; defaultMessage: string; badge?: string }> = {
   assessment: {
-    service: "analysis",
+    service: "credit-analysis",
     heading: "Get Started with Credit Assessment",
     subheading: "A one-time deep dive into your credit report from all three bureaus.",
     planName: "Credit Assessment",
@@ -64,7 +64,7 @@ const PLAN_CONFIG: Record<string, { service: string; heading: string; subheading
     defaultMessage: "Hi, I'm interested in the Credit Assessment plan ($99). I'd like to schedule my credit report review and consultation call. Please reach out to get started.",
   },
   repair: {
-    service: "repair",
+    service: "credit-repair",
     heading: "Get Started with Credit Repair",
     subheading: "Ongoing support to dispute errors and boost your score.",
     planName: "Credit Repair Program",
@@ -82,7 +82,7 @@ const PLAN_CONFIG: Record<string, { service: string; heading: string; subheading
     defaultMessage: "Hi, I'm interested in the Credit Repair Program ($299/mo). I'd like to start the dispute process and work on improving my credit score. Please reach out to get started.",
   },
   freedom: {
-    service: "planning",
+    service: "financial-planning",
     heading: "Get Started with Financial Freedom",
     subheading: "Complete transformation with planning, budgeting, and wealth building.",
     planName: "Financial Freedom",
@@ -110,7 +110,7 @@ const PLAN_CONFIG: Record<string, { service: string; heading: string; subheading
     defaultMessage: "",
   },
   "credit-analysis": {
-    service: "analysis",
+    service: "credit-analysis",
     heading: "Get Started with Credit Score Analysis",
     subheading: "Full breakdown of your credit report from all three bureaus.",
     planName: "Credit Score Analysis",
@@ -121,7 +121,7 @@ const PLAN_CONFIG: Record<string, { service: string; heading: string; subheading
     defaultMessage: "Hi, I'm interested in the Credit Score Analysis ($99). I'd like a full breakdown of my credit report from all three bureaus. Please reach out to get started.",
   },
   "credit-repair": {
-    service: "repair",
+    service: "credit-repair",
     heading: "Get Started with Credit Repair",
     subheading: "We handle the entire dispute process with all three bureaus.",
     planName: "Credit Repair",
@@ -133,7 +133,7 @@ const PLAN_CONFIG: Record<string, { service: string; heading: string; subheading
     defaultMessage: "Hi, I'm interested in the Credit Repair plan ($299/mo). I'd like to start the dispute process with all three bureaus. Please reach out to get started.",
   },
   "financial-planning": {
-    service: "planning",
+    service: "financial-planning",
     heading: "Get Started with Financial Planning",
     subheading: "Build a real financial plan covering budgeting, saving, and investing.",
     planName: "Financial Planning",
@@ -144,7 +144,7 @@ const PLAN_CONFIG: Record<string, { service: string; heading: string; subheading
     defaultMessage: "Hi, I'm interested in the Financial Planning plan ($499). I'd like to build a financial plan covering budgeting, saving, and investing. Please reach out to get started.",
   },
   "debt-management": {
-    service: "debt",
+    service: "debt-management",
     heading: "Get Started with Debt Management",
     subheading: "Stop collection calls. We negotiate to cut balances and build a payoff strategy.",
     planName: "Debt Management",
@@ -155,7 +155,7 @@ const PLAN_CONFIG: Record<string, { service: string; heading: string; subheading
     defaultMessage: "Hi, I'm interested in the Debt Management plan ($499). I'd like help with creditor negotiations and building a payoff strategy. Please reach out to get started.",
   },
   "financial-literacy": {
-    service: "literacy",
+    service: "financial-literacy",
     heading: "Get Started with Financial Literacy",
     subheading: "Learn how credit really works with one-on-one sessions and workshops.",
     planName: "Financial Literacy",
