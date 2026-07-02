@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       "Transparent pricing for credit consulting services. Choose the plan that fits your needs.",
     url: `${SITE_URL}/pricing`,
-    images: [{ url: `${SITE_URL}/api/og?title=Pricing&subtitle=Transparent%20Pricing%20for%20Credit%20Consulting`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/api/og?title=Pricing&subtitle=Transparent%20Pricing%20for%20Credit%20Consulting&image=/images/Screenshot_20260503_114017_Telegram.jpg`, width: 1200, height: 630 }],
   },
 };
 

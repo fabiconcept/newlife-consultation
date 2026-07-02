@@ -7,6 +7,11 @@ export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const title = searchParams.get("title") || "New Life Consulting";
   const subtitle = searchParams.get("subtitle") || "Credit Consulting for Everyday People";
+  const imageParam = searchParams.get("image");
+
+  const SITE_URL = process.env.SITE_URL || "https://www.newlifeconsulting.com";
+  const hasImage = imageParam && imageParam.length > 0;
+  const imageUrl = hasImage ? `${SITE_URL}${imageParam}` : null;
 
   return new ImageResponse(
     (
@@ -16,13 +21,44 @@ export async function GET(req: NextRequest) {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0d9488 100%)",
-          fontFamily: "sans-serif",
           position: "relative",
           overflow: "hidden",
+          fontFamily: "sans-serif",
         }}
       >
-        {/* Decorative circles */}
+        {/* Background: image or gradient */}
+        {imageUrl ? (
+          <>
+            <img
+              src={imageUrl}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+            />
+            {/* Dark overlay */}
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(135deg, rgba(15,23,42,0.85) 0%, rgba(30,58,138,0.75) 50%, rgba(13,148,136,0.65) 100%)",
+              }}
+            />
+          </>
+        ) : (
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0d9488 100%)",
+            }}
+          />
+        )}
+
+        {/* Decorative circles (always shown) */}
         <div
           style={{
             position: "absolute",
@@ -42,27 +78,16 @@ export async function GET(req: NextRequest) {
             width: "500px",
             height: "500px",
             borderRadius: "50%",
-            background: "rgba(13,148,136,0.2)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            right: "20%",
-            width: "200px",
-            height: "200px",
-            borderRadius: "50%",
-            background: "rgba(255,255,255,0.03)",
+            background: "rgba(13,148,136,0.15)",
           }}
         />
 
-        {/* Grid pattern overlay */}
+        {/* Dot grid pattern */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)",
+            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0)",
             backgroundSize: "40px 40px",
           }}
         />
@@ -132,7 +157,7 @@ export async function GET(req: NextRequest) {
               lineHeight: 1.05,
               marginBottom: "28px",
               maxWidth: "900px",
-              textShadow: "0 4px 24px rgba(0,0,0,0.3)",
+              textShadow: "0 4px 24px rgba(0,0,0,0.4)",
             }}
           >
             {title}
@@ -153,9 +178,10 @@ export async function GET(req: NextRequest) {
           <div
             style={{
               fontSize: "28px",
-              color: "rgba(255,255,255,0.75)",
+              color: "rgba(255,255,255,0.8)",
               lineHeight: 1.4,
               maxWidth: "700px",
+              textShadow: "0 2px 12px rgba(0,0,0,0.3)",
             }}
           >
             {subtitle}
@@ -170,7 +196,7 @@ export async function GET(req: NextRequest) {
             left: 0,
             right: 0,
             height: "80px",
-            background: "rgba(0,0,0,0.3)",
+            background: "rgba(0,0,0,0.4)",
             backdropFilter: "blur(10px)",
             display: "flex",
             justifyContent: "space-between",
@@ -181,7 +207,7 @@ export async function GET(req: NextRequest) {
           <div
             style={{
               fontSize: "18px",
-              color: "rgba(255,255,255,0.7)",
+              color: "rgba(255,255,255,0.8)",
               fontWeight: "500",
             }}
           >
@@ -193,7 +219,7 @@ export async function GET(req: NextRequest) {
               alignItems: "center",
               gap: "8px",
               fontSize: "18px",
-              color: "rgba(255,255,255,0.7)",
+              color: "rgba(255,255,255,0.8)",
               fontWeight: "500",
             }}
           >

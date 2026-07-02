@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       "Credit score analysis, credit repair, financial planning, debt management, financial literacy, and expert consulting.",
     url: `${SITE_URL}/services`,
-    images: [{ url: `${SITE_URL}/api/og?title=Our%20Services&subtitle=Credit%20Repair%2C%20Financial%20Planning%20%26%20More`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/api/og?title=Our%20Services&subtitle=Credit%20Repair%2C%20Financial%20Planning%20%26%20More&image=/images/Screenshot_20260501_164240_Drive.jpg`, width: 1200, height: 630 }],
   },
 };
 

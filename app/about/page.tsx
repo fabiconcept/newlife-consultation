@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Learn about New Life Consulting. We help everyday people take control of their credit.",
     url: `${SITE_URL}/about`,
-    images: [{ url: `${SITE_URL}/api/og?title=About%20Us&subtitle=Learn%20about%20New%20Life%20Consulting`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/api/og?title=About%20Us&subtitle=Learn%20about%20New%20Life%20Consulting&image=/images/about/hannah-busing-Zyx1bK9mqmA-unsplash.jpg`, width: 1200, height: 630 }],
   },
 };
 

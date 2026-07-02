@@ -37,11 +37,11 @@ export const metadata: Metadata = {
     siteName: "New Life Consulting",
     locale: "en_US",
     type: "website",
-    images: [{ url: `${SITE_URL}/api/og?title=New%20Life%20Consulting&subtitle=Credit%20Consulting%20for%20Everyday%20People`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/api/og?title=New%20Life%20Consulting&subtitle=Credit%20Consulting%20for%20Everyday%20People&image=/images/Screenshot_20260627_184529_209.jpg`, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    images: [`${SITE_URL}/api/og?title=New%20Life%20Consulting&subtitle=Credit%20Consulting%20for%20Everyday%20People`],
+    images: [`${SITE_URL}/api/og?title=New%20Life%20Consulting&subtitle=Credit%20Consulting%20for%20Everyday%20People&image=/images/Screenshot_20260627_184529_209.jpg`],
   },
   robots: { index: true, follow: true },
   icons: { icon: "/favicon.ico" },
