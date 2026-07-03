@@ -286,7 +286,19 @@ export default function Contact() {
   }, []);
 
   const timersRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
+  const formRef = useRef<HTMLDivElement>(null);
 
+  // Scroll to form and focus name input when arriving from a plan/service link
+  useEffect(() => {
+    if (planParam && formRef.current) {
+      const timer = setTimeout(() => {
+        formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        const nameInput = formRef.current?.querySelector<HTMLInputElement>("input#name");
+        nameInput?.focus();
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [planParam]);
   // Debounced validation for touched fields (500ms)
   useEffect(() => {
     Object.keys(touched).forEach((field) => {
@@ -462,7 +474,7 @@ export default function Contact() {
             </div>
 
             {/* Right — Contact Form */}
-            <div className="bg-gray-50 rounded-2xl p-8 sm:p-10 border border-gray-100">
+            <div ref={formRef} className="bg-gray-50 rounded-2xl p-8 sm:p-10 border border-gray-100">
               {planConfig?.type === "plan" && planConfig.planName && (
                 <div className="mb-8 p-6 bg-white rounded-xl border border-gray-100">
                   <div className="flex items-start justify-between mb-4">
