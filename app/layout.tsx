@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { New_Rocker, Stack_Sans_Notch, Montserrat, Geist } from "next/font/google";
+import { Stack_Sans_Notch, Montserrat, Geist } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PageTransition from "./components/PageTransition";

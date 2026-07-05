@@ -3,12 +3,13 @@
 import Button from "../components/Button";
 import FaqAccordion from "../components/FaqAccordion";
 import { pricingFaqs } from "@/lib/faqs";
+import Magnetic from "../components/Magnetic";
 
 export default function Pricing() {
   return (
     <div className="flex flex-col">
       {/* 1. Page Header - Upgraded */}
-      <section className="relative py-24 px-4 hero-gradient bg-gradient-to-br from-primary via-primary-dark to-primary text-white overflow-hidden">
+      <section className="relative py-24 px-4 hero-gradient bg-linear-to-br from-primary via-primary-dark to-primary text-white overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
@@ -35,7 +36,7 @@ export default function Pricing() {
               <div className="font-display text-5xl font-bold mb-6 text-secondary">$99</div>
               <ul className="font-body space-y-3 mb-8 text-left flex-1">
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -43,7 +44,7 @@ export default function Pricing() {
                   <span>Full credit report review (all 3 bureaus)</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -51,7 +52,7 @@ export default function Pricing() {
                   <span>Score factor analysis</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -59,7 +60,7 @@ export default function Pricing() {
                   <span>Personalized action plan</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -67,7 +68,9 @@ export default function Pricing() {
                   <span>30-minute consultation call</span>
                 </li>
               </ul>
-              <Button href="/contact?plan=assessment" variant="outline" fullWidth>Get Started</Button>
+              <Magnetic strength={2}>
+                <Button href="/contact?plan=assessment" variant="outline" fullWidth>Get Started</Button>
+              </Magnetic>
             </div>
 
             {/* Tier 2 */}
@@ -80,7 +83,7 @@ export default function Pricing() {
               <div className="font-display text-5xl font-bold mb-6 text-secondary">$299<span className="text-lg text-muted-foreground">/mo</span></div>
               <ul className="font-body space-y-3 mb-8 text-left flex-1">
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -88,7 +91,7 @@ export default function Pricing() {
                   <span>Everything in Assessment</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -96,7 +99,7 @@ export default function Pricing() {
                   <span>Unlimited dispute assistance</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -104,7 +107,7 @@ export default function Pricing() {
                   <span>Monthly progress reports</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -112,7 +115,7 @@ export default function Pricing() {
                   <span>Creditor negotiations</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -120,7 +123,9 @@ export default function Pricing() {
                   <span>Dedicated support line</span>
                 </li>
               </ul>
-              <Button href="/contact?plan=repair" variant="secondary" fullWidth>Get Started</Button>
+              <Magnetic strength={2}>
+                <Button href="/contact?plan=repair" variant="secondary" fullWidth>Get Started</Button>
+              </Magnetic>
             </div>
 
             {/* Tier 3 */}
@@ -130,7 +135,7 @@ export default function Pricing() {
               <div className="font-display text-5xl font-bold mb-6 text-accent">$499</div>
               <ul className="font-body space-y-3 mb-8 text-left flex-1">
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -138,7 +143,7 @@ export default function Pricing() {
                   <span>Everything in Repair</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -146,7 +151,7 @@ export default function Pricing() {
                   <span>Financial planning session</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -154,7 +159,7 @@ export default function Pricing() {
                   <span>Custom budget & savings plan</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -162,7 +167,7 @@ export default function Pricing() {
                   <span>Debt management strategy</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 bg-success rounded-full flex items-center justify-center shrink-0">
                     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
@@ -170,7 +175,9 @@ export default function Pricing() {
                   <span>Wealth building roadmap</span>
                 </li>
               </ul>
-              <Button href="/contact?plan=freedom" variant="accent" fullWidth>Get Started</Button>
+              <Magnetic strength={2}>
+                <Button href="/contact?plan=freedom" variant="accent" fullWidth>Get Started</Button>
+              </Magnetic>
             </div>
           </div>
         </div>
@@ -198,9 +205,11 @@ export default function Pricing() {
           <p className="font-body text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
             Book your free consultation and let&apos;s build a plan for your financial future.
           </p>
-          <Button href="/booking" variant="white" size="lg">
-            Book Free Consultation
-          </Button>
+          <Magnetic>
+            <Button href="/booking" variant="white" size="lg">
+              Book Free Consultation
+            </Button>
+          </Magnetic>
         </div>
       </section>
     </div>
