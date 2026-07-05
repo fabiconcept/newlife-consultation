@@ -7,13 +7,13 @@ import { buildBreadcrumbs } from "@/lib/metadata";
 const SITE_URL = process.env.SITE_URL || "https://www.newlifeconsulting.com";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "Our Story | How 500+ People Fixed Their Credit",
   description:
-    "Learn about New Life Consulting. We help everyday people take control of their credit and build a stronger financial future.",
+    "From client to founder: the story behind New Life Consulting. 10+ years helping everyday people take control of their credit.",
   openGraph: {
-    title: "About Us",
+    title: "Our Story | How 500+ People Fixed Their Credit",
     description:
-      "Learn about New Life Consulting. We help everyday people take control of their credit.",
+      "From client to founder: the story behind New Life Consulting.",
     url: `${SITE_URL}/about`,
     images: [{ url: `${SITE_URL}/api/og?title=About%20Us&subtitle=Learn%20about%20New%20Life%20Consulting&image=/images/about/hannah-busing-Zyx1bK9mqmA-unsplash.jpg`, width: 1200, height: 630 }],
   },
@@ -38,11 +38,11 @@ export default function About() {
         </div>
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <span className="inline-block px-4 py-2 bg-white/10 rounded-full font-body text-sm font-medium mb-6 backdrop-blur-sm animate-slide-up">
-            The Story Behind the Mission
+            From Client to Founder
           </span>
-          <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 animate-slide-up-delay">Our Story</h1>
+          <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 animate-slide-up-delay">How One Credit Problem Became a Mission to Help 500+ People</h1>
           <p className="font-body text-xl text-blue-100 max-w-2xl mx-auto animate-slide-up-delay-2">
-            The story behind the mission.
+            From client to founder: the story behind New Life Consulting.
           </p>
         </div>
       </section>
@@ -65,7 +65,7 @@ export default function About() {
             <div>
               <p className="font-body text-secondary font-semibold mb-2">Steffon Jean-Baptiste</p>
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 text-foreground">
-                The person behind New Life Consulting
+                Steffon Knows What It Feels Like to Be Stuck
               </h2>
               <div className="font-body text-gray-500 space-y-4">
                 <p>
@@ -94,7 +94,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto relative z-10 text-center">
           <p className="font-body text-white/80 font-semibold mb-3">What We Stand For</p>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight max-w-3xl mx-auto">
-            Credit shouldn&apos;t be a mystery. It&apos;s a system. We know how it works.
+            Credit Is a System.<br />We Know How It Works.
           </h2>
           <p className="font-body text-lg text-white/70 max-w-2xl mx-auto">
             Every decision we make, every plan we build, every conversation we have comes down to one thing: getting you real results, not just promises.
@@ -154,7 +154,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-foreground">
-              Where the Work Happens
+              500+ Clients Served From Right Here
             </h2>
             <p className="font-body text-gray-500 max-w-2xl mx-auto">
               A look inside New Life Consulting. Real office, real work, real results.
@@ -178,7 +178,7 @@ export default function About() {
       <section className="py-20 px-4 bg-primary text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
-            Ready to Start Your New Life?
+            Your New Life Starts With One Call
           </h2>
           <p className="font-body text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
             Let&apos;s figure out where you are and where you want to be.

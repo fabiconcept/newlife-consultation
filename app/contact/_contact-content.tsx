@@ -106,7 +106,7 @@ const PLAN_CONFIG: Record<string, { type: "plan" | "service" | "consultation"; s
     type: "consultation",
     service: "",
     heading: "Book Your Free Consultation",
-    subheading: "No pressure, no sales pitch. Just an honest conversation about your credit.",
+    subheading: "We'll tell you exactly where your credit stands and what to do next.",
     planName: "",
     price: "",
     period: "",
@@ -348,7 +348,7 @@ export default function Contact() {
       }
 
       toast.dismiss(loadingToast);
-      toast.success("Message sent successfully!");
+      toast.success("Message sent! We'll be in touch within 24 hours.");
       setSubmittedName(form.name.split(" ")[0]);
       setShowSuccess(true);
       setForm({ name: "", email: "", phone: "", service: "", message: "", plan: "", type: "" });
@@ -395,7 +395,7 @@ export default function Contact() {
           <span className="inline-block px-4 py-2 bg-white/10 rounded-full font-body text-sm font-medium mb-6 backdrop-blur-sm animate-slide-up">
             Let&apos;s Talk
           </span>
-          <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 animate-slide-up-delay">Contact Us</h1>
+          <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 animate-slide-up-delay">Let&apos;s Talk About Your Credit</h1>
           <p className="font-body text-xl text-blue-100 max-w-2xl mx-auto animate-slide-up-delay-2">
             Ready to take the first step? We&apos;re here to help.
           </p>
@@ -434,7 +434,7 @@ export default function Contact() {
                 {planConfig?.heading ?? "Let\u2019s talk about\nyour credit."}
               </h2>
               <p className="font-body text-gray-500 mb-10 text-lg">
-                {planConfig?.subheading ?? "No pressure, no sales pitch. Just an honest conversation about where you are and where you want to be."}
+                {planConfig?.subheading ?? "We'll tell you exactly where your credit stands and what to do next."}
               </p>
 
               <div className="space-y-5 mb-10">
@@ -681,8 +681,8 @@ export default function Contact() {
       <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-foreground">
-              We Serve Clients Nationwide
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-foreground">
+              Based in New York. Serving Clients in All 50 States.
             </h2>
             <p className="font-body text-gray-500 max-w-2xl mx-auto">
               Based in New York, working with clients across all 50 states. Phone and video consultations available.

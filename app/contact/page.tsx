@@ -6,15 +6,15 @@ import { buildBreadcrumbs } from "@/lib/metadata";
 const SITE_URL = process.env.SITE_URL || "https://www.newlifeconsulting.com";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Us | Free Credit Consultation",
   description:
-    "Get in touch with New Life Consulting. Free consultations, call, text, or email. We respond within 24 hours.",
+    "Get in touch with New Life Consulting. Free 30-minute consultation, call, text, or email. We respond within 24 hours.",
   openGraph: {
-    title: "Contact Us",
+    title: "Contact Us | Free Credit Consultation",
     description:
-      "Get in touch with New Life Consulting. Free consultations, call, text, or email.",
+      "Get in touch with New Life Consulting. Free consultation, call, text, or email.",
     url: `${SITE_URL}/contact`,
-    images: [{ url: `${SITE_URL}/api/og?title=Contact%20Us&subtitle=Free%20Consultations%20%E2%80%94%20Call%2C%20Text%20or%20Email&image=/images/home/matt-foxx-IUY_3DvM__w-unsplash.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/api/og?title=Contact%20Us&subtitle=Free%20Consultations.%20Call%2C%20Text%20or%20Email&image=/images/home/matt-foxx-IUY_3DvM__w-unsplash.jpg`, width: 1200, height: 630 }],
   },
 };
 

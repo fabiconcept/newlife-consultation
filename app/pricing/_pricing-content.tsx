@@ -17,7 +17,7 @@ export default function Pricing() {
           <span className="inline-block px-4 py-2 bg-white/10 rounded-full font-body text-sm font-medium mb-6 backdrop-blur-sm border border-white/20 animate-slide-up">
             Honest Pricing
           </span>
-          <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 animate-slide-up-delay">Pricing & FAQ</h1>
+          <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 animate-slide-up-delay">What Credit Consulting Costs<br />(And What It&apos;s Worth)</h1>
           <p className="font-body text-xl text-blue-100 max-w-2xl mx-auto animate-slide-up-delay-2">
             You pay for what you get. Nothing more, nothing less.
           </p>
@@ -192,8 +192,8 @@ export default function Pricing() {
       {/* 4. CTA Band */}
       <section className="py-20 px-4 bg-primary text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
-            Start Your New Life Today
+            <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
+            Your Credit Score Is Costing<br />You Money Right Now
           </h2>
           <p className="font-body text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
             Book your free consultation and let&apos;s build a plan for your financial future.

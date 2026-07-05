@@ -1,21 +1,9 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useEffect } from "react";
 import { buildBreadcrumbs } from "@/lib/metadata";
 
-const SITE_URL = process.env.SITE_URL || "https://www.newlifeconsulting.com";
-const CALENDLY_URL = process.env.CALENDLY_URL || "https://calendly.com/your-link";
-
-export const metadata: Metadata = {
-  title: "Book a Free Consultation",
-  description:
-    "Schedule a free 30-minute consultation with New Life Consulting. No pressure, no sales pitch — just an honest conversation about your credit.",
-  openGraph: {
-    title: "Book a Free Consultation",
-    description:
-      "Schedule a free 30-minute consultation. No pressure, no sales pitch.",
-    url: `${SITE_URL}/booking`,
-    images: [{ url: `${SITE_URL}/api/og?title=Book%20a%20Free%20Consultation&subtitle=No%20Pressure%20%E2%80%94%20Just%20an%20Honest%20Conversation`, width: 1200, height: 630 }],
-  },
-};
+const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/your-username";
 
 const breadcrumbs = buildBreadcrumbs([
   { name: "Home", path: "/" },
@@ -23,6 +11,16 @@ const breadcrumbs = buildBreadcrumbs([
 ]);
 
 export default function BookingPage() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col">
       <script
@@ -40,10 +38,10 @@ export default function BookingPage() {
             Free Consultation
           </span>
           <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 animate-slide-up-delay">
-            Book Your Free Call
+            Book Your Free 30-Minute<br />Credit Consultation
           </h1>
           <p className="font-body text-xl text-blue-100 max-w-2xl mx-auto animate-slide-up-delay-2">
-            30 minutes. No pressure. No sales pitch. Just an honest conversation about your credit and where you want to be.
+            In 30 minutes, you'll know exactly where your credit stands and what to do next.
           </p>
         </div>
       </section>
@@ -52,14 +50,10 @@ export default function BookingPage() {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
-            <iframe
-              src={`${CALENDLY_URL}?embed_domain=${typeof window !== "undefined" ? window.location.hostname : "www.newlifeconsulting.com"}&embed_source=parent`}
-              width="100%"
-              height="700"
-              frameBorder="0"
-              title="Book a consultation"
-              className="w-full min-h-[700px]"
-              loading="lazy"
+            <div
+              className="calendly-inline-widget"
+              data-url={CALENDLY_URL}
+              style={{ minWidth: "320px", height: "700px" }}
             />
           </div>
 
@@ -67,7 +61,7 @@ export default function BookingPage() {
           <div className="mt-10 grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {[
               { icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z", title: "30-Minute Free Call", desc: "Discuss your situation with zero commitment" },
-              { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", title: "Zero Pressure", desc: "No sales pitch — just honest advice" },
+              { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", title: "Zero Pressure", desc: "No sales pitch. Just honest advice" },
               { icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6", title: "Real Results", desc: "Average 120+ point score increase" },
             ].map((item) => (
               <div key={item.title} className="text-center">
