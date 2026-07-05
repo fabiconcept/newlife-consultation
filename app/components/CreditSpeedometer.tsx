@@ -239,7 +239,7 @@ export default function CreditSpeedometer({ size = "lg" }: { size?: "sm" | "lg" 
     <div className="flex flex-col items-center w-full rounded-[28px] px-6 py-8 sm:px-10 sm:py-10">
       {/* Bureau tabs */}
       {size !== "sm" && (
-        <div role="tablist" aria-label="Credit bureau" className="flex gap-1.5 mb-6 p-1 rounded-full bg-gray-100">
+        <div role="tablist" aria-label="Credit bureau" className="flex gap-1.5 mb-6 p-1 rounded-full bg-gray-100 border border-slate-200">
           {bureaus.map((bureau, i) => (
             <button
               key={bureau.name}
