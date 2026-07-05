@@ -22,7 +22,8 @@ export default function Navbar() {
     if (!mobileOpen) return;
     const id = requestAnimationFrame(() => setMobileOpen(false));
     return () => cancelAnimationFrame(id);
-  }, [pathname, mobileOpen]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   useEffect(() => {
     if (mobileOpen) {
