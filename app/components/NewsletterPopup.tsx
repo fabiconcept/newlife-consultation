@@ -129,7 +129,10 @@ export default function NewsletterPopup() {
                   Sending...
                 </span>
               ) : (
-                "Send Me the Checklist"
+                <>
+                  <span className="hidden sm:inline">Send Me the Checklist</span>
+                  <span className="sm:hidden">Get it Free</span>
+                </>
               )}
             </Button>
           </form>
