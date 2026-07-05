@@ -1,28 +1,45 @@
-import type { Metadata } from "next";
+"use client";
+
 import Button from "../components/Button";
 import CreditSpeedometer from "../components/CreditSpeedometer";
 import Parallax from "../components/Parallax";
-import { buildBreadcrumbs } from "@/lib/metadata";
+import ReviewsCarousel from "../components/ReviewsCarousel";
 
 const SITE_URL = process.env.SITE_URL || "https://www.newlifeconsulting.com";
 
-export const metadata: Metadata = {
-  title: "Our Story | How 500+ People Fixed Their Credit",
-  description:
-    "From client to founder: the story behind New Life Consulting. 10+ years helping everyday people take control of their credit.",
-  openGraph: {
-    title: "Our Story | How 500+ People Fixed Their Credit",
-    description:
-      "From client to founder: the story behind New Life Consulting.",
-    url: `${SITE_URL}/about`,
-    images: [{ url: `${SITE_URL}/api/og?title=About%20Us&subtitle=Learn%20about%20New%20Life%20Consulting&image=/images/about/hannah-busing-Zyx1bK9mqmA-unsplash.jpg`, width: 1200, height: 630 }],
-  },
+const breadcrumbs = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "About" },
+  ],
 };
 
-const breadcrumbs = buildBreadcrumbs([
-  { name: "Home", path: "/" },
-  { name: "About" },
-]);
+const REVIEWS = [
+  { text: "I was 29, renting, and getting denied for everything. Steffon walked me through my report line by line. Four months later I closed on my first house. I still can't believe it.", name: "James R.", role: "Credit Repair Client", initials: "JR", cssVar: "--primary" },
+  { text: "My husband and I were paying 22% interest on a car loan because of one collections item from 2019. New Life got it removed in 6 weeks. We refinanced at 4.5%.", name: "Tanya M.", role: "Credit Repair Client", initials: "TM", cssVar: "--secondary" },
+  { text: "Honestly I was skeptical. I'd tried DIY credit repair for years and nothing worked. But they found 12 errors I'd never caught. Score went from 520 to 710.", name: "Derek W.", role: "Credit Repair Client", initials: "DW", cssVar: "--accent" },
+  { text: "I'm a single mom with two kids and $34K in credit card debt. I thought I'd be paying it off forever. They negotiated my balances down and built a plan I could actually follow. Debt-free in 18 months.", name: "Sandra L.", role: "Debt Management Client", initials: "SL", cssVar: "--success" },
+  { text: "I'm a teacher. Nobody taught me about credit growing up. The financial literacy session connected dots I'd been confused about for 20 years. Now I'm teaching my kids what I wish someone had taught me.", name: "Marcus B.", role: "Financial Literacy Client", initials: "MB", cssVar: "--warning" },
+  { text: "Applied for a car loan in January, got denied. Called New Life the same week. By April I was driving a new car at a rate I could afford. That's not a typo.", name: "Priya K.", role: "Credit Repair Client", initials: "PK", cssVar: "--danger" },
+  { text: "After my divorce my credit was destroyed. 480 score. New Life didn't judge me, they just got to work. Two years later I bought my own place. Steffon changed my life.", name: "Angela T.", role: "Credit Repair Client", initials: "AT", cssVar: "--primary" },
+  { text: "I own a small business and needed capital. Banks kept saying no because of my personal credit. New Life fixed my credit and now I have a $50K line of credit at 6%.", name: "Carlos M.", role: "Business Credit Client", initials: "CM", cssVar: "--secondary" },
+  { text: "The financial literacy session was a wake-up call. I learned things in one hour that would have taken me years to figure out. My score jumped 80 points in 3 months.", name: "Nicole P.", role: "Financial Literacy Client", initials: "NP", cssVar: "--accent" },
+  { text: "My student loans were in default and I thought there was no way out. New Life helped me negotiate a payment plan I could actually afford and got my credit back on track.", name: "Brian K.", role: "Debt Management Client", initials: "BK", cssVar: "--success" },
+  { text: "I was paying $300/month for car insurance because of my credit. After working with New Life, my score went up 150 points and my insurance dropped to $140/month. That's $1,920/year back in my pocket.", name: "Latisha J.", role: "Credit Repair Client", initials: "LJ", cssVar: "--warning" },
+  { text: "I applied for a mortgage and got denied. My realtor recommended New Life. Six months later I closed on my dream home at a rate I never thought possible.", name: "Robert H.", role: "Credit Repair Client", initials: "RH", cssVar: "--danger" },
+  { text: "As a veteran, I thought I knew everything about finances. I was wrong. The financial literacy session opened my eyes to things I'd been doing wrong for 20 years.", name: "Derek S.", role: "Financial Literacy Client", initials: "DS", cssVar: "--primary" },
+  { text: "My wife and I were drowning in credit card debt. $67K total. New Life helped us consolidate and negotiate. We're now debt-free and actually saving money.", name: "Michael & Lisa W.", role: "Debt Management Client", initials: "MW", cssVar: "--secondary" },
+  { text: "I'm a freelancer with irregular income. Banks kept denying me because they couldn't verify my income. New Life found a way to make it work. Now I have a business credit card with a $25K limit.", name: "Jasmine C.", role: "Business Credit Client", initials: "JC", cssVar: "--accent" },
+  { text: "The best investment I ever made. Period. My credit score went from 510 to 740 in 8 months. I saved over $40,000 in interest on my mortgage refinance.", name: "William D.", role: "Credit Repair Client", initials: "WD", cssVar: "--success" },
+  { text: "I was about to lose my apartment because of a collections item from 2017. New Life got it removed in 3 weeks and my landlord renewed my lease. I can't thank them enough.", name: "Tamara R.", role: "Credit Repair Client", initials: "TR", cssVar: "--warning" },
+  { text: "My credit was ruined by a business failure. 420 score. Nobody would help me. New Life took my case and got my score to 680. I'm back in business.", name: "Andre L.", role: "Credit Repair Client", initials: "AL", cssVar: "--danger" },
+  { text: "I'm a nurse working 60 hours a week. I didn't have time to deal with my credit. New Life handled everything. Score went from 580 to 720 while I focused on my patients.", name: "Keisha N.", role: "Credit Repair Client", initials: "KN", cssVar: "--primary" },
+  { text: "My identity was stolen and 7 fraudulent accounts were opened in my name. New Life got every single one removed and my score recovered in 4 months.", name: "David P.", role: "Credit Repair Client", initials: "DP", cssVar: "--secondary" },
+  { text: "I run a nonprofit and we needed a line of credit for operations. New Life helped me build business credit separate from my personal. Game changer.", name: "Rebecca F.", role: "Business Credit Client", initials: "RF", cssVar: "--accent" },
+  { text: "My kids are going to college next year and I needed to fix my credit to co-sign their loans. New Life made it happen in time. Both got approved.", name: "Patricia G.", role: "Credit Repair Client", initials: "PG", cssVar: "--success" },
+];
 
 export default function About() {
   return (
@@ -174,7 +191,22 @@ export default function About() {
         </div>
       </section>
 
-      {/* 6. CTA Band */}
+      {/* 6. Client Reviews */}
+      <section id="reviews" className="py-20 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-foreground">
+              500+ Clients, Real Results
+            </h2>
+            <p className="font-body text-gray-500 max-w-2xl mx-auto">
+              Don&apos;t take our word for it. Here&apos;s what our clients say about working with New Life Consulting.
+            </p>
+          </div>
+          <ReviewsCarousel reviews={REVIEWS} />
+        </div>
+      </section>
+
+      {/* 7. CTA Band */}
       <section className="py-20 px-4 bg-primary text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
