@@ -1,15 +1,15 @@
 export const faqs = [
   {
     q: "How fast will my credit improve?",
-    a: "Most clients see measurable improvements within 3-6 months. Credit repair is a process. We start by pulling your reports, identifying inaccuracies, and filing disputes with all three bureaus. While results vary, many clients see their first deletions within 45 days.",
+    a: "Most clients see their first deletions within 45 days. Full improvements typically take 3-6 months. We start by pulling your reports, identifying inaccuracies, and filing disputes with all three bureaus. The sooner we start, the sooner you'll see progress.",
+  },
+  {
+    q: "What if my score is really bad?",
+    a: "We've taken clients from the 400s to 700+. No credit situation is too difficult. The sooner we start, the sooner you'll see improvement.",
   },
   {
     q: "Do I need to pay upfront?",
     a: "No. We offer flexible payment options so you can get started without financial stress. Our pricing is transparent, with no hidden fees and no surprises. We'll walk you through everything during your free consultation so you know exactly what to expect.",
-  },
-  {
-    q: "What if my score is really bad?",
-    a: "We've helped clients with scores in the 400s bounce back to 700+. No matter where you're starting from, there's always a path forward. The sooner we start, the sooner you'll see progress. Every credit journey is unique, and we build a plan around your situation.",
   },
   {
     q: "Will this affect my credit negatively?",
@@ -24,12 +24,8 @@ export const faqs = [
     a: "Yes. We dispute with Equifax, Experian, and TransUnion simultaneously. If a bureau fails to respond or verify an item within 30 days, it must be deleted. We track every dispute and keep you updated on progress.",
   },
   {
-    q: "How long does credit repair take?",
-    a: "Most clients see noticeable improvements within 3-6 months. Some items can be removed as quickly as 30 days, while others may take longer depending on the complexity of your report.",
-  },
-  {
     q: "Do you guarantee results?",
-    a: "While every situation is different, we have a proven track record of helping clients improve their scores significantly. We can't guarantee specific numbers, but we guarantee our best effort and full transparency throughout the process.",
+    a: "We've helped 500+ clients raise their scores. We can't guarantee specific numbers, but we guarantee our best effort and full transparency throughout the process.",
   },
   {
     q: "What if I can't afford the monthly plan?",
@@ -38,10 +34,6 @@ export const faqs = [
   {
     q: "Can I cancel anytime?",
     a: "Yes. Our monthly plans have no long-term contracts. You can cancel anytime with no penalties. We want you to stay because you're seeing results, not because you're locked in.",
-  },
-  {
-    q: "Do you work with bad credit?",
-    a: "Absolutely. We've helped clients with scores in the 400s. No credit situation is too difficult. The sooner we start, the sooner you'll see improvement.",
   },
   {
     q: "How does the free consultation work?",
@@ -61,7 +53,7 @@ export const faqs = [
   },
   {
     q: "How do you differ from DIY credit repair?",
-    a: "DIY repair can work, but it requires a lot of time, knowledge, and persistence. We know the laws, the tactics, and the timelines. Our clients see faster results because we've already done this hundreds of times.",
+    a: "DIY repair can work, but it takes years. Our clients see results in months because we've done this 500+ times. We know the laws, the tactics, and the timelines.",
   },
   {
     q: "What happens after my score improves?",

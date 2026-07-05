@@ -59,13 +59,13 @@
 - [ ] Update OG background images if changed
 
 ### Copywriting
-- [ ] Review all page headlines with client
-- [ ] Review all page body copy with client
-- [ ] Review service descriptions
-- [ ] Review pricing plan descriptions
-- [ ] Review FAQ questions and answers
-- [ ] Review meta titles and descriptions
-- [ ] Ensure brand voice is consistent: "bold and playful with warm welcoming feel"
+- [x] Review all page headlines with client
+- [x] Review all page body copy with client
+- [x] Review service descriptions
+- [x] Review pricing plan descriptions
+- [x] Review FAQ questions and answers
+- [x] Review meta titles and descriptions
+- [x] Ensure brand voice is consistent: "bold and playful with warm welcoming feel"
 
 ---
 
