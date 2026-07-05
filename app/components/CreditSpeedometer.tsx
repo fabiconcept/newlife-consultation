@@ -26,8 +26,8 @@ function tierColor(s: number) {
 function DigitReel({ digit, height = 72 }: { digit: number; height?: number }) {
   return (
     <div
-      className="relative overflow-hidden font-display tabular-nums"
-      style={{ height, width: height * 0.62 }}
+      className="relative overflow-hidden tabular-nums"
+      style={{ height, width: height * 0.55, fontFamily: "'Digital-7', monospace" }}
     >
       <div
         className="absolute left-0 top-0 transition-transform duration-300 ease-out"
@@ -37,7 +37,7 @@ function DigitReel({ digit, height = 72 }: { digit: number; height?: number }) {
           <div
             key={n}
             className="flex items-center justify-center text-foreground"
-            style={{ height, fontSize: height * 0.78, lineHeight: 1 }}
+            style={{ height, fontSize: height * 0.85, lineHeight: 1, fontWeight: 700 }}
           >
             {n}
           </div>

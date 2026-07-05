@@ -128,10 +128,12 @@ export default function CharGauge({ count, max, min }: CharGaugeProps) {
           x={cx} y={cy + 18}
           textAnchor="middle"
           dominantBaseline="central"
-          className="font-display tabular-nums"
+          className="tabular-nums"
           fill={color}
-          fontSize="22"
-          fontWeight="700"
+          fontSize="24"
+          fontWeight="800"
+          fontFamily="'Digital-7', monospace"
+          letterSpacing="-0.02em"
         >
           {countStr}
         </text>

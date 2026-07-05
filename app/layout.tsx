@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { New_Rocker, Montserrat, Geist } from "next/font/google";
+import { New_Rocker, Stack_Sans_Notch, Montserrat, Geist } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PageTransition from "./components/PageTransition";
@@ -11,9 +11,9 @@ import { Toaster } from "react-hot-toast";
 import { cn } from "@/lib/utils";
 import { buildStructuredData } from "@/lib/metadata";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
-const newRocker = New_Rocker({
+const newRocker = Stack_Sans_Notch({
   variable: "--font-new-rocker",
   subsets: ["latin"],
   weight: "400",
@@ -58,6 +58,9 @@ export default function RootLayout({
       lang="en"
       className={cn("h-full", "antialiased", newRocker.variable, montserrat.variable, "font-sans", geist.variable)}
     >
+      <head>
+        <link href="https://fonts.cdnfonts.com/css/digital-7-mono" rel="stylesheet" />
+      </head>
       <body className="min-h-full flex flex-col bg-white">
         <script
           type="application/ld+json"
