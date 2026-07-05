@@ -3,6 +3,7 @@
 import { useState, FormEvent } from "react";
 import toast from "react-hot-toast";
 import Button from "./Button";
+import Magnetic from "./Magnetic";
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
@@ -59,21 +60,24 @@ export default function NewsletterSignup() {
           required
           className="flex-1 px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg font-body text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary/40 focus:border-secondary/40 transition-colors duration-200"
         />
-        <Button
-          type="submit"
-          disabled={status === "submitting"}
-          variant="secondary"
-          className="px-4 py-2.5 bg-secondary hover:bg-secondary-light text-white font-body text-sm font-semibold rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-        >
-          {status === "submitting" ? (
-            <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-            </svg>
-          ) : (
-            "Send Me the Checklist"
-          )}
-        </Button>
+        <Magnetic strength={2}>
+
+          <Button
+            type="submit"
+            disabled={status === "submitting"}
+            variant="secondary"
+            className="px-4 py-2.5 bg-secondary hover:bg-secondary-light text-white font-body text-sm font-semibold rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+          >
+            {status === "submitting" ? (
+              <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+            ) : (
+              "Send Me the Checklist"
+            )}
+          </Button>
+        </Magnetic>
       </form>
     </div>
   );
