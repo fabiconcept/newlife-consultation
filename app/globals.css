@@ -548,6 +548,32 @@ body {
   display: none;
 }
 
+/* Loading animations */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+@keyframes dots {
+  0%, 20% { content: "."; }
+  40% { content: ".."; }
+  60%, 100% { content: "..."; }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+.animate-spin-reverse {
+  animation: spin-reverse 2.5s linear infinite;
+}
+.animate-dots::after {
+  content: ".";
+  animation: dots 1.4s steps(1) infinite;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

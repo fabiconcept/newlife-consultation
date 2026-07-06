@@ -6,6 +6,7 @@ import PageTransition from "./components/PageTransition";
 import ScrollToTop from "./components/ScrollToTop";
 import CookieConsent from "./components/CookieConsent";
 import NewsletterPopup from "./components/NewsletterPopup";
+import DevErrorTester from "./components/DevErrorTester";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { cn } from "@/lib/utils";
@@ -78,6 +79,7 @@ export default function RootLayout({
         <Footer />
         <CookieConsent />
         <NewsletterPopup />
+        <DevErrorTester />
       </body>
     </html>
   );
