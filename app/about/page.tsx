@@ -105,7 +105,7 @@ export default function About() {
       {/* 3. Mission Image */}
       <section className="relative py-32 sm:py-40 px-4 overflow-hidden">
         <div className="absolute inset-0 flex flex-col">
-          <Parallax intensity={-200} className="flex-1">
+          <Parallax intensity={200} className="flex-1">
             <Image src="/images/about/hannah-busing-Zyx1bK9mqmA-unsplash.jpg" alt="" className="w-full h-[120%] object-cover mt-[-10%]" width={1000} height={1000} />
           </Parallax>
           <div className="absolute inset-0 bg-black/50" />

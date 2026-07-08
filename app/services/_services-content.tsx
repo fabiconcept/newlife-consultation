@@ -288,7 +288,7 @@ export default function Services() {
       {/* 6b. Large Image Break */}
       <section className="relative py-32 sm:py-40 px-4 min-h-screen flex items-center justify-start overflow-hidden">
         <div className="absolute inset-0 flex flex-col">
-          <Parallax intensity={-300} className="flex-1">
+          <Parallax intensity={300} className="flex-1">
             <Image 
               src="/images/services/helena-lopes-PGnqT0rXWLs-unsplash.jpg" 
               alt="" 
