@@ -288,13 +288,13 @@ export default function Services() {
       {/* 6b. Large Image Break */}
       <section className="relative py-32 sm:py-40 px-4 min-h-screen flex items-center justify-start overflow-hidden">
         <div className="absolute inset-0 flex flex-col">
-          <Parallax intensity={300} className="flex-1">
+          <Parallax intensity={-500} className="flex-1">
             <Image 
               src="/images/services/helena-lopes-PGnqT0rXWLs-unsplash.jpg" 
               alt="" 
               width={1920} 
               height={1080} 
-              className="w-full h-[120%] object-cover" 
+              className="w-full min-h-auto sm:h-[120%] h-[150%] object-cover" 
             />
           </Parallax>
           <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-black/30" />

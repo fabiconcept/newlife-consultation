@@ -205,8 +205,8 @@ export default function Home() {
       {/* 4b. Large Image Break */}
       <section className="relative py-32 sm:py-40 px-4 overflow-hidden">
         <div className="absolute inset-0 flex flex-col">
-          <Parallax intensity={200} className="flex-1">
-            <Image src="/images/home/matt-foxx-IUY_3DvM__w-unsplash.jpg" alt="" className="w-full min-h-auto h-[120%] object-cover mt-[-10%]" width={1920} height={1080} />
+          <Parallax intensity={-700} className="flex-1">
+            <Image src="/images/home/matt-foxx-IUY_3DvM__w-unsplash.jpg" alt="" className="w-full min-h-auto sm:h-[120%] h-[150%] object-cover mt-[-10%]" width={1920} height={1080} />
           </Parallax>
           <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-black/30" />
         </div>
@@ -326,8 +326,8 @@ export default function Home() {
       {/* 7b. Large Image Break */}
       <section className="relative py-32 sm:py-40 min-h-screen flex items-center justify-start px-4 overflow-hidden">
         <div className="absolute inset-0 flex flex-col">
-          <Parallax intensity={200} className="flex-1">
-            <Image src="/images/home/proven-results.jpg" alt="" className="w-full h-[120%] object-cover" width={1920} height={1080} />
+          <Parallax intensity={-600} className="flex-1">
+            <Image src="/images/home/proven-results.jpg" alt="" className="w-full min-h-auto sm:h-[120%] h-[150%] object-cover" width={1920} height={1080} />
           </Parallax>
           <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-black/30" />
         </div>
